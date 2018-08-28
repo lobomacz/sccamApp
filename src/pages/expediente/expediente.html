@@ -1,0 +1,51 @@
+<!--
+  Generated template for the ExpedientePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Expediente</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+<ion-segment [(ngModel)]="seccion">
+<ion-segment-button value="paciente">
+Paciente
+</ion-segment-button>
+
+<ion-segment-button value="consulta">
+Consulta
+</ion-segment-button>
+
+<ion-segment-button value="epicrisis">
+Epicrisis
+</ion-segment-button>
+
+</ion-segment>
+<div [ngSwitch]="seccion">
+	<div *ngSwitchCase="'paciente'">
+		Pestana de paciente
+		 <button ion-item *ngFor="let item of listado">
+     <h2>{{ item.primerNombre | uppercase }} </h2> 
+     <h4 class="titulo-secundario">{{ item.numExpediente }}</h4>
+    </button>
+	</div>
+	<div *ngSwitchCase="'consulta'">
+		Pestana de consulta
+		<button ion-item *ngFor="let item of listado1">
+      <h2>{{ item.diagnostico | uppercase }}  </h2>
+      <h4 class="titulo-secundario">{{ item.numExpediente }}</h4>
+    </button>
+	</div>
+	<div *ngSwitchCase="'epicrisis'">
+		Pestana de epicrisis
+	</div>
+</div>
+
+</ion-content>
