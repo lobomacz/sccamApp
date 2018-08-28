@@ -35,7 +35,6 @@ export class LoginPage {
 
   Validar(){
   	this.auth.auth.signInWithEmailAndPassword(this.nombreusuario, this.contrasena).then(function(credenciales){
-      this.usuario = credenciales.user;
       this.Cerrar();
     }).catch((error) => {
 
@@ -60,7 +59,7 @@ export class LoginPage {
       let toast = this.toastCtrl.create({
         message:mensaje,
         duration:3000,
-        position:'middle'
+        position:'bottom'
       });
 
       toast.present();
