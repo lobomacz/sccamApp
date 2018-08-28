@@ -14,6 +14,7 @@ import { MedicosPage } from '../pages/medicos/medicos';
 import { AgendaPage } from '../pages/agenda/agenda';
 import { ExpedientePage } from '../pages/expediente/expediente';
 import { LoginPage } from '../pages/login/login';
+import { PopoverPage } from '../pages/popover/popover';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -37,7 +38,8 @@ export const firebaseConfig = {
     MedicosPage,
     AgendaPage,
     ExpedientePage,
-    LoginPage
+    LoginPage,
+    PopoverPage
   ],
   imports: [
     BrowserModule,
@@ -54,7 +56,8 @@ export const firebaseConfig = {
     MedicosPage,
     AgendaPage,
     ExpedientePage,
-    LoginPage
+    LoginPage,
+    PopoverPage
   ],
   providers: [
     StatusBar,

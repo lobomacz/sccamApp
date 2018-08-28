@@ -5,6 +5,9 @@ import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angu
 //Importamos el componente de autenticacion del modulo de angularfire2
 import { AngularFireAuth } from 'angularfire2/auth';
 
+import { TabsPage } from '../../pages/tabs/tabs';
+
+
 /**
  * Generated class for the LoginPage page.
  *
@@ -34,8 +37,9 @@ export class LoginPage {
   }
 
   Validar(){
+    let that = this;
   	this.auth.auth.signInWithEmailAndPassword(this.nombreusuario, this.contrasena).then(function(credenciales){
-      this.Cerrar();
+      that.Cerrar();
     }).catch((error) => {
 
       let errorCode = error.code;
@@ -67,7 +71,7 @@ export class LoginPage {
   }
 
   Cerrar(){
-    this.navCtrl.pop();
+    this.navCtrl.setRoot(TabsPage);
   }
 
 }
