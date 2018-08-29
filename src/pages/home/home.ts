@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, PopoverController } from 'ionic-angular';
+import { NavController, PopoverController, Popover } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { PopoverPage } from '../../pages/popover/popover';
 
@@ -10,25 +10,34 @@ import { PopoverPage } from '../../pages/popover/popover';
 export class HomePage {
 
 	private usuario:any;
+	private popover:Popover;
 
   constructor(public navCtrl: NavController, private popoverCtrl:PopoverController, private auth:AngularFireAuth) {
 
   }
 
-  ionViewDidLoad(){
+  ionViewWillEnter(){
   	this.LoadAuthState();
   }
 
+  ionViewDidLoad(){
+  	
+  }
+
   MenuUsuario(evento:Event){
-  	this.popoverCtrl.create(PopoverPage).present({ev:evento});
+  	if(this.usuario !== null){
+  		this.popover = this.popoverCtrl.create(PopoverPage);
+  		this.popover.present({ev:evento});
+  	}
   }
 
   LoadAuthState(){
-    
       this.auth.user.subscribe((usuario) => {
         console.log(usuario);
         if(usuario !== null){
           this.usuario = usuario;
+        }else{
+        	this.usuario = null;
         }
       });
     

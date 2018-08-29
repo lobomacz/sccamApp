@@ -17,7 +17,7 @@ export class MyApp {
 
   	this.auth.user.subscribe((usuario) => {
         console.log(usuario);
-        if(usuario === null){
+        if(usuario === undefined){
           this.rootPage = LoginPage;
         }else{
           this.rootPage = TabsPage;

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 import { HomePage } from '../home/home';
 import { MedicosPage } from '../medicos/medicos';
@@ -18,8 +19,16 @@ export class TabsPage {
   tab6Root = ExpedientePage;
 
 
-  constructor(private navCtrl:NavController) {
+  constructor(private navCtrl:NavController, private auth:AngularFireAuth) {
   	
+  }
+
+  ionViewWillEnter(){
+    this.auth.user.subscribe((usuario) => {
+      if(usuario === null){
+        this.navCtrl.setRoot(LoginPage);
+      }
+    });
   }
 
   ionViewDidLoad(){
