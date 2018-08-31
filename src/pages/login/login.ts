@@ -37,6 +37,7 @@ export class LoginPage {
   }
 
   Validar(){
+
     let that = this;
   	this.auth.auth.signInWithEmailAndPassword(this.nombreusuario, this.contrasena).then(function(credenciales){
       that.Cerrar();
@@ -68,6 +69,7 @@ export class LoginPage {
 
       toast.present();
     });
+
   }
 
   Cerrar(){

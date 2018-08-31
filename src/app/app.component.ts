@@ -16,12 +16,13 @@ export class MyApp {
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private auth:AngularFireAuth) {
 
   	this.auth.user.subscribe((usuario) => {
-        console.log(usuario);
+    
         if(usuario === undefined){
           this.rootPage = LoginPage;
         }else{
           this.rootPage = TabsPage;
         }
+        
       });
 
     platform.ready().then(() => {

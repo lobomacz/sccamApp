@@ -1,9 +1,16 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons start>
+      <button ion-button icon-only color="light">
+        <ion-icon color="primary" name="settings"></ion-icon>
+      </button>
+    </ion-buttons>
   	<ion-title>Home</ion-title>
-    <button item-end *ngIf="usuario !== null" color="light"  ion-button icon-only (click)="MenuUsuario($event)" >
-		<ion-icon name="more"></ion-icon>
-	</button>
+    <ion-buttons end>
+      <button item-end *ngIf="usuario !== null" color="light"  ion-button icon-only (click)="MenuUsuario($event)" >
+      <ion-icon color="dark" name="more"></ion-icon>
+    </button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 

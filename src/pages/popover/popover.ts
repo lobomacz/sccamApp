@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ViewController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 
 import { AngularFireAuth } from 'angularfire2/auth';
 import { User } from 'firebase';
@@ -19,7 +19,7 @@ export class PopoverPage {
 
   private usuario:User;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private auth:AngularFireAuth, private viewCtrl:ViewController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private auth:AngularFireAuth) {
     this.usuario = null;
   }
 
