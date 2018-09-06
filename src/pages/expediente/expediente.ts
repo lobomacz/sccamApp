@@ -1,34 +1,41 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
-import { AgregarPage } from '../agregar/agregar';
-
+import { NavController, NavParams } from 'ionic-angular';
 import { HttpClient } from "@angular/common/http";
+import { SccamProvider } from "../../providers/sccam/sccam";
+
+
+/**
+ * Generated class for the ExpedientePage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
 
 @Component({
   selector: 'page-expediente',
-  templateUrl: 'expediente.html'
+  templateUrl: 'expediente.html',
 })
 export class ExpedientePage {
-  listado;
-  listado1;
-  constructor(public navCtrl: NavController, private http: HttpClient) {
-    this.cargarInformacion();
-     this.cargarInformacion1();
+ listado;
+  constructor(public navCtrl: NavController, public navParams: NavParams, private provider:SccamProvider) {
+  	 this.cargarInformacion();
+  	  this.cargarInformacion1();
   }
-
   cargarInformacion() {
-    this.http.get("http://localhost/api/pacientes.php?opcion=1").subscribe(snap => {
+    this.provider.ListaPacientes().subscribe(snap => {
       console.log(snap);
       this.listado = snap;
     });
   }
    cargarInformacion1() {
-    this.http.get("http://localhost/api/consulta.php?opcion=1").subscribe(snap => {
+    this.provider.ListaConsultas().subscribe(snap => {
       console.log(snap);
-      this.listado1 = snap;
+      this.listado = snap;
     });
   }
 
-   goRegistrar(){this.navCtrl.push(AgregarPage)}
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad ExpedientePage');
+  }
 
 }

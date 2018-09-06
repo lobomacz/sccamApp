@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, ViewController } from 'ionic-angular';
+import {AngularFireAuth} from 'angularfire2/auth';
+import {User} from 'firebase';
 
-import { AngularFireAuth } from 'angularfire2/auth';
-import { User } from 'firebase';
+
 
 /**
  * Generated class for the PopoverPage page.
@@ -16,27 +17,29 @@ import { User } from 'firebase';
   templateUrl: 'popover.html',
 })
 export class PopoverPage {
+	private usuario:User;
 
-  private usuario:User;
-
-  constructor(public navCtrl: NavController, public navParams: NavParams, private auth:AngularFireAuth) {
-    this.usuario = null;
+  constructor(public navCtrl: NavController, public navParams: NavParams,private auth:AngularFireAuth, private viewCtrl:ViewController) {
+  this.usuario=null;
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PopoverPage');
-    this.auth.user.subscribe((usuario) => {
-      if (usuario !== undefined) {
-        this.usuario = usuario;
-      }
+    this.auth.user.subscribe((usuario)=>{
+    	if(usuario !== undefined){
+    		this.usuario=usuario;
+    	}
+    	
     });
   }
 
-  UserLogout(){
-  	this.auth.auth.signOut().then(() => {
-      this.navCtrl.popAll();
-    });
-    
-  }
+UserLogout(){
+	this.auth.auth.signOut().then(()=>{
+    this.navCtrl.popAll();
+
+	});
+}
+
+
 
 }

@@ -20,15 +20,17 @@
       </ion-item>
       <ion-item>
         <ion-icon name="person" item-left></ion-icon>
-        <ion-input #email="ngModel" [(ngModel)]="nombreusuario" name="correo"  type="text" placeholder="Email" required></ion-input>
+        <ion-label stacked>Email:</ion-label>
+        <ion-input  #email="ngModel"[(ngModel)]="nombreusuario" name="correo" type="text"  placeholder="Email" required></ion-input>
       </ion-item>
       <ion-item>
         <ion-icon name="key" item-left></ion-icon>
-        <ion-input #password="ngModel" [(ngModel)]="contrasena" name="contrasena" type="password" placeholder="Password" required></ion-input>
+        <ion-label stacked>Password:</ion-label>
+        <ion-input #password="ngModel"[(ngModel)]="contrasena" name="contrasena" type="password" placeholder="Password" required></ion-input>
       </ion-item>
     </ion-list>
     <div padding>
-      <button ion-button block (click)="Validar()" [disabled]="!loginForm.form.valid">Ingresar</button>
+      <button ion-button block (click)="Validar()" [disabled]="!loginForm.form.valid" >Ingresar</button>
     </div>
   </form>
 

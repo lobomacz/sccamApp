@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { HttpClient } from "@angular/common/http";
+import { SccamProvider } from "../../providers/sccam/sccam";
 
 /**
  * Generated class for the AgendaPage page.
@@ -15,12 +16,12 @@ import { HttpClient } from "@angular/common/http";
 })
 export class AgendaPage {
 listado;
-constructor(public navCtrl: NavController, private http: HttpClient) {
+constructor(public navCtrl: NavController, private http: HttpClient, private provider:SccamProvider) {
     this.cargarInformacion();
     
   } 
  cargarInformacion() {
-    this.http.get("http://localhost/api/citas.php?opcion=1").subscribe(snap => {
+     this.provider.ListaCitas().subscribe(snap => {
       console.log(snap);
       this.listado = snap;
     });
